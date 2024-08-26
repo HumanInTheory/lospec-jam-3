@@ -1,0 +1,134 @@
+[gd_scene load_steps=8 format=3 uid="uid://crubc3e6lv58i"]
+
+[ext_resource type="Script" path="res://src/overworld_ui.gd" id="1_6jbr5"]
+[ext_resource type="Texture2D" uid="uid://by7a0arbiogy0" path="res://assets/infobox/character-card.png" id="2_n0bcn"]
+[ext_resource type="Texture2D" uid="uid://p01g68hleklv" path="res://assets/infobox/aori-portrait.png" id="3_i2na3"]
+[ext_resource type="Theme" uid="uid://b7tfudhaagmpe" path="res://assets/default.theme" id="4_5pdlu"]
+[ext_resource type="Texture2D" uid="uid://crim2rxavknvf" path="res://assets/infobox/terrain-card.png" id="5_lxmdl"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wci5r"]
+texture = ExtResource("2_n0bcn")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fx7cc"]
+texture = ExtResource("5_lxmdl")
+
+[node name="overworld-ui" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6jbr5")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -88.0
+offset_top = -44.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 3
+
+[node name="unit-box" type="PanelContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(88, 44)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_wci5r")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/unit-box"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/unit-box/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 2
+
+[node name="unit-portrait" type="TextureRect" parent="MarginContainer/unit-box/HBoxContainer/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("3_i2na3")
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/unit-box/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/unit-box/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/unit-box/HBoxContainer/MarginContainer2/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme = ExtResource("4_5pdlu")
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 8
+text = "Airi"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/unit-box/HBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_5pdlu")
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 8
+text = "HP 35/35"
+horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+offset_right = 47.0
+grow_vertical = 0
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_bottom = 3
+
+[node name="terrain-box" type="PanelContainer" parent="MarginContainer2"]
+custom_minimum_size = Vector2(47, 35)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_fx7cc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2/terrain-box"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/terrain-box/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 4
+
+[node name="Label" type="Label" parent="MarginContainer2/terrain-box/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("4_5pdlu")
+text = "Plains"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer2/terrain-box/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/terrain-box/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 9
+
+[node name="Label" type="Label" parent="MarginContainer2/terrain-box/VBoxContainer/MarginContainer2/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_5pdlu")
+theme_override_constants/line_spacing = -3
+text = "DEF
+AVD"
+vertical_alignment = 1
+
+[node name="data" type="Label" parent="MarginContainer2/terrain-box/VBoxContainer/MarginContainer2/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_5pdlu")
+theme_override_constants/line_spacing = -3
+text = "0
+0"
+horizontal_alignment = 2

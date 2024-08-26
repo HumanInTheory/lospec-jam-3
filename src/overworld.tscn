@@ -1,0 +1,103 @@
+[gd_scene load_steps=13 format=4 uid="uid://iyjvca2opy3x"]
+
+[ext_resource type="Texture2D" uid="uid://c4lv8pfuplwfo" path="res://assets/overworld/overworld-tiles-grass.png" id="1_od7ma"]
+[ext_resource type="Texture2D" uid="uid://cuyflc6v22ysb" path="res://assets/overworld/grass-buildings.png" id="2_8aax0"]
+[ext_resource type="PackedScene" uid="uid://crubc3e6lv58i" path="res://src/overworld_ui.tscn" id="2_tgamp"]
+[ext_resource type="PackedScene" uid="uid://c31ie8x3f63x2" path="res://src/game_board.tscn" id="5_3h2be"]
+[ext_resource type="PackedScene" uid="uid://btpi0ubyducgb" path="res://src/unit.tscn" id="5_18ujk"]
+[ext_resource type="PackedScene" uid="uid://dyujf4hqc5pms" path="res://src/grid_cursor.tscn" id="6_tbw62"]
+[ext_resource type="PackedScene" uid="uid://f8vs5jpefney" path="res://src/unit_path.tscn" id="7_c6s20"]
+[ext_resource type="PackedScene" uid="uid://r8yjwc0jilds" path="res://src/unit_overlay.tscn" id="8_6udvj"]
+[ext_resource type="PackedScene" uid="uid://dq1rla7pk3bp8" path="res://src/menu.tscn" id="9_jhbk7"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ai0ye"]
+texture = ExtResource("1_od7ma")
+0:0/0 = 0
+1:0/0 = 0
+3:0/0 = 0
+3:0/0/custom_data_0 = true
+0:1/0 = 0
+3:1/0 = 0
+3:1/0/custom_data_0 = true
+0:2/0 = 0
+0:2/0/custom_data_0 = true
+3:2/0 = 0
+0:3/0 = 0
+0:3/0/custom_data_0 = true
+1:3/0 = 0
+1:3/0/custom_data_0 = true
+2:3/0 = 0
+2:3/0/custom_data_0 = true
+1:2/0 = 0
+2:2/0 = 0
+2:2/0/custom_data_0 = true
+2:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ee5bi"]
+texture = ExtResource("2_8aax0")
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+1:0/0 = 0
+1:0/0/custom_data_0 = true
+2:0/0 = 0
+2:0/0/custom_data_0 = true
+0:1/0 = 0
+0:1/0/custom_data_0 = true
+1:1/0 = 0
+1:1/0/custom_data_0 = true
+2:1/0 = 0
+2:1/0/custom_data_0 = true
+0:2/0 = 0
+0:2/0/custom_data_0 = true
+1:2/0 = 0
+1:2/0/custom_data_0 = true
+0:3/0 = 0
+0:3/0/custom_data_0 = true
+1:3/0 = 0
+1:3/0/custom_data_0 = true
+
+[sub_resource type="TileSet" id="TileSet_ke5c1"]
+custom_data_layer_0/name = "Solid"
+custom_data_layer_0/type = 1
+sources/0 = SubResource("TileSetAtlasSource_ai0ye")
+sources/1 = SubResource("TileSetAtlasSource_ee5bi")
+
+[node name="overworld" type="Node2D"]
+texture_filter = 1
+
+[node name="game-board" parent="." instance=ExtResource("5_3h2be")]
+layer = -1
+
+[node name="world-map" type="TileMapLayer" parent="game-board"]
+texture_filter = 1
+tile_map_data = PackedByteArray("AAABAAAAAAAAAAAAAAABAAEAAAAAAAAAAAABAAIAAAABAAAAAAABAAMAAAABAAAAAAABAAQAAAADAAAAAAABAAUAAAADAAEAAAABAAYAAAADAAIAAAABAAcAAAADAAEAAAABAAgAAAADAAEAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAACAAIAAQAAAAAAAAACAAMAAQAAAAEAAAACAAQAAAAAAAAAAAACAAUAAAAAAAAAAAACAAYAAAAAAAAAAAACAAcAAAAAAAAAAAACAAgAAAAAAAAAAAADAAAAAAAAAAAAAAADAAEAAAAAAAAAAAADAAIAAQABAAAAAAADAAMAAQABAAEAAAADAAQAAAAAAAAAAAADAAUAAAAAAAAAAAADAAYAAAAAAAAAAAADAAcAAAAAAAAAAAADAAgAAAAAAAAAAAAEAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAEAAIAAQACAAAAAAAEAAMAAQACAAEAAAAEAAQAAAAAAAAAAAAEAAUAAAAAAAAAAAAEAAYAAAAAAAAAAAAEAAcAAAAAAAAAAAAEAAgAAAAAAAAAAAAFAAAAAAABAAMAAAAFAAEAAAABAAAAAAAFAAIAAAABAAAAAAAFAAMAAAAAAAIAAAAFAAQAAAAAAAAAAAAFAAUAAAAAAAAAAAAFAAYAAAAAAAAAAAAFAAcAAAAAAAAAAAAFAAgAAAAAAAAAAAAGAAAAAAACAAMAAAAGAAEAAAABAAAAAAAGAAIAAAAAAAAAAAAGAAMAAAAAAAEAAAAGAAQAAAAAAAIAAAAGAAUAAAAAAAAAAAAGAAYAAAABAAAAAAAGAAcAAAAAAAAAAAAGAAgAAAAAAAAAAAAHAAAAAAABAAAAAAAHAAEAAAABAAAAAAAHAAIAAAAAAAAAAAAHAAMAAAAAAAAAAAAHAAQAAAAAAAAAAAAHAAUAAAAAAAAAAAAHAAYAAAAAAAIAAAAHAAcAAAAAAAAAAAAHAAgAAAAAAAAAAAAIAAAAAAAAAAAAAAAIAAEAAAAAAAAAAAAIAAIAAAAAAAAAAAAIAAMAAAAAAAAAAAAIAAQAAQAAAAIAAAAIAAUAAQAAAAMAAAAIAAYAAAAAAAEAAAAIAAcAAAAAAAIAAAAIAAgAAAAAAAAAAAAJAAAAAAAAAAAAAAAJAAEAAQAAAAAAAAAJAAIAAQAAAAEAAAAJAAMAAAAAAAAAAAAJAAQAAQABAAIAAAAJAAUAAQABAAMAAAAJAAYAAAAAAAAAAAAJAAcAAAAAAAEAAAAJAAgAAAAAAAIAAAAKAAAAAAAAAAAAAAAKAAEAAQABAAAAAAAKAAIAAQABAAEAAAAKAAMAAAAAAAAAAAAKAAQAAAAAAAAAAAAKAAUAAAAAAAAAAAAKAAYAAQAAAAAAAAAKAAcAAQAAAAEAAAAKAAgAAAAAAAAAAAALAAAAAAAAAAAAAAALAAEAAQACAAAAAAALAAIAAQACAAEAAAALAAMAAAAAAAAAAAALAAQAAAAAAAAAAAALAAUAAAAAAAAAAAALAAYAAQABAAAAAAALAAcAAQABAAEAAAALAAgAAAAAAAAAAAAMAAAAAAABAAAAAAAMAAEAAAAAAAAAAAAMAAIAAAAAAAAAAAAMAAMAAAAAAAAAAAAMAAQAAAAAAAAAAAAMAAUAAAAAAAAAAAAMAAYAAQACAAAAAAAMAAcAAQACAAEAAAAMAAgAAAAAAAAAAAANAAAAAAABAAAAAAANAAEAAAAAAAAAAAANAAIAAAAAAAAAAAANAAMAAAAAAAAAAAANAAQAAAAAAAAAAAANAAUAAAAAAAAAAAANAAYAAAAAAAAAAAANAAcAAAABAAIAAAANAAgAAAAAAAAAAAAOAAAAAAAAAAAAAAAOAAEAAAAAAAAAAAAOAAIAAAAAAAAAAAAOAAMAAAAAAAAAAAAOAAQAAAAAAAAAAAAOAAUAAAAAAAAAAAAOAAYAAAACAAEAAAAOAAcAAAACAAIAAAAOAAgAAAABAAAAAAAPAAAAAAAAAAAAAAAPAAEAAAABAAAAAAAPAAIAAAAAAAAAAAAPAAMAAAAAAAAAAAAPAAQAAAAAAAAAAAAPAAUAAAAAAAAAAAAPAAYAAAACAAIAAAAPAAcAAAAAAAAAAAAPAAgAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAABAAAAAAAAAAMAAAABAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_ke5c1")
+
+[node name="unit-overlay" parent="game-board" instance=ExtResource("8_6udvj")]
+
+[node name="unit_path" parent="game-board" instance=ExtResource("7_c6s20")]
+
+[node name="unit" parent="game-board" instance=ExtResource("5_18ujk")]
+texture_filter = 1
+path_speed = 100
+
+[node name="unit2" parent="game-board" instance=ExtResource("5_18ujk")]
+position = Vector2(182, 57)
+army = 1
+
+[node name="grid_cursor" parent="game-board" instance=ExtResource("6_tbw62")]
+
+[node name="overworld-ui" parent="game-board" instance=ExtResource("2_tgamp")]
+mouse_filter = 2
+
+[node name="menu" parent="game-board" instance=ExtResource("9_jhbk7")]
+visible = false
+offset_left = 206.0
+offset_top = 40.0
+offset_right = 235.0
+offset_bottom = 75.0
+
+[connection signal="accept_pressed" from="game-board/grid_cursor" to="game-board" method="_on_grid_cursor_accept_pressed"]
+[connection signal="moved" from="game-board/grid_cursor" to="game-board" method="_on_grid_cursor_moved"]
+[connection signal="clicked_away" from="game-board/menu" to="game-board" method="_on_menu_clicked_away"]
+[connection signal="clicked_item" from="game-board/menu" to="game-board" method="_on_menu_clicked_item"]

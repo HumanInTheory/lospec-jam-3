@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=3 uid="uid://f8vs5jpefney"]
+
+[ext_resource type="Texture2D" uid="uid://c3f6smkk1kyb5" path="res://assets/overworld/move_path.png" id="1_iy41k"]
+[ext_resource type="Script" path="res://unit_path.gd" id="2_joc57"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_34ojt"]
+texture = ExtResource("1_iy41k")
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/terrain = 0
+1:0/0/terrains_peering_bit/right_side = 0
+1:0/0/terrains_peering_bit/left_side = 0
+2:0/0 = 0
+2:0/0/terrain_set = 0
+2:0/0/terrain = 0
+2:0/0/terrains_peering_bit/bottom_side = 0
+2:0/0/terrains_peering_bit/top_side = 0
+0:1/0 = 0
+0:1/0/terrain_set = 0
+0:1/0/terrain = 0
+0:1/0/terrains_peering_bit/right_side = 0
+0:1/0/terrains_peering_bit/bottom_side = 0
+1:1/0 = 0
+1:1/0/terrain_set = 0
+1:1/0/terrain = 0
+1:1/0/terrains_peering_bit/bottom_side = 0
+1:1/0/terrains_peering_bit/left_side = 0
+2:1/0 = 0
+2:1/0/terrain_set = 0
+2:1/0/terrain = 0
+2:1/0/terrains_peering_bit/bottom_side = 0
+3:1/0 = 0
+3:1/0/terrain_set = 0
+3:1/0/terrain = 0
+3:1/0/terrains_peering_bit/left_side = 0
+0:2/0 = 0
+0:2/0/terrain_set = 0
+0:2/0/terrain = 0
+0:2/0/terrains_peering_bit/right_side = 0
+0:2/0/terrains_peering_bit/top_side = 0
+1:2/0 = 0
+1:2/0/terrain_set = 0
+1:2/0/terrain = 0
+1:2/0/terrains_peering_bit/left_side = 0
+1:2/0/terrains_peering_bit/top_side = 0
+2:2/0 = 0
+2:2/0/terrain_set = 0
+2:2/0/terrain = 0
+2:2/0/terrains_peering_bit/top_side = 0
+3:2/0 = 0
+3:2/0/terrain_set = 0
+3:2/0/terrain = 0
+3:2/0/terrains_peering_bit/right_side = 0
+
+[sub_resource type="TileSet" id="TileSet_ow6dq"]
+terrain_set_0/mode = 2
+terrain_set_0/terrain_0/name = "path"
+terrain_set_0/terrain_0/color = Color(0.178598, 0.238942, 0.961296, 1)
+sources/0 = SubResource("TileSetAtlasSource_34ojt")
+
+[node name="unit_path" type="TileMapLayer"]
+texture_filter = 1
+tile_set = SubResource("TileSet_ow6dq")
+script = ExtResource("2_joc57")

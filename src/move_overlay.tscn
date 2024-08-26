@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://dkjouyw4il37v"]
+
+[ext_resource type="Script" path="res://move_overlay.gd" id="1_x0fvj"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_do03b"]
+load_path = "res://.godot/imported/overlays.png-026a1f4f293bcd8c1b98400dce3cf303.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yaepe"]
+atlas = SubResource("CompressedTexture2D_do03b")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1l7q"]
+atlas = SubResource("CompressedTexture2D_do03b")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmdo7"]
+atlas = SubResource("CompressedTexture2D_do03b")
+region = Rect2(16, 0, 16, 16)
+
+[node name="move-overlay" type="MarginContainer"]
+offset_right = 16.0
+offset_bottom = 16.0
+script = ExtResource("1_x0fvj")
+
+[node name="none" type="TextureRect" parent="."]
+layout_mode = 2
+texture = SubResource("AtlasTexture_yaepe")
+
+[node name="red" type="TextureRect" parent="."]
+visible = false
+layout_mode = 2
+texture = SubResource("AtlasTexture_k1l7q")
+
+[node name="blue" type="TextureRect" parent="."]
+visible = false
+layout_mode = 2
+texture = SubResource("AtlasTexture_mmdo7")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

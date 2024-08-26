@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://r8yjwc0jilds"]
+
+[ext_resource type="Texture2D" uid="uid://ccoxysetwsrjc" path="res://assets/overworld/overlays.png" id="1_uuy7v"]
+[ext_resource type="Script" path="res://src/unit_overlay.gd" id="2_ai85e"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gwhtn"]
+texture = ExtResource("1_uuy7v")
+1:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_jg55m"]
+sources/0 = SubResource("TileSetAtlasSource_gwhtn")
+
+[node name="unit-overlay" type="TileMapLayer"]
+texture_filter = 1
+tile_set = SubResource("TileSet_jg55m")
+script = ExtResource("2_ai85e")

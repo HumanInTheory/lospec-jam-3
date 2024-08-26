@@ -1,0 +1,372 @@
+[gd_scene load_steps=21 format=3 uid="uid://box5pokb5njgr"]
+
+[ext_resource type="Texture2D" uid="uid://bg20mp2g0kggc" path="res://assets/battle-ui/left-hp-box.png" id="2_7po71"]
+[ext_resource type="Texture2D" uid="uid://oxftskxoxqdu" path="res://assets/battle-ui/name-panel.png" id="2_rgbyd"]
+[ext_resource type="Theme" uid="uid://b7tfudhaagmpe" path="res://assets/default.theme" id="3_dealn"]
+[ext_resource type="Texture2D" uid="uid://k5e7x2endigf" path="res://assets/battle-ui/hp-bar-under.png" id="5_dwx1j"]
+[ext_resource type="Texture2D" uid="uid://bgakqpb20ckte" path="res://assets/battle-ui/item-panel.png" id="6_e03e2"]
+[ext_resource type="Texture2D" uid="uid://hwkc0mp7sbp5" path="res://assets/battle-ui/hp-bar-progress.png" id="6_wof43"]
+[ext_resource type="Texture2D" uid="uid://h84qysr7jaa4" path="res://assets/battle-ui/katana-mini.png" id="7_p12jn"]
+[ext_resource type="Texture2D" uid="uid://bxhwdefvevmow" path="res://assets/battle-ui/left-hp-blue.tres" id="8_cpgqb"]
+[ext_resource type="Texture2D" uid="uid://cb73khji3gyvh" path="res://assets/battle-ui/right-name-purple.png" id="11_2ugpr"]
+[ext_resource type="Texture2D" uid="uid://ceibbmnvtnmgc" path="res://assets/battle-ui/right-item-purple.png" id="12_vgmer"]
+[ext_resource type="Texture2D" uid="uid://b56uu3rpdnjp8" path="res://assets/battle-ui/right-data-purple.png" id="13_8pqdc"]
+[ext_resource type="Texture2D" uid="uid://dcnb02fo0q7xx" path="res://assets/battle-ui/right-hp-purple.png" id="14_865et"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i5yy0"]
+texture = ExtResource("2_rgbyd")
+texture_margin_left = 3.0
+texture_margin_top = 4.0
+texture_margin_right = 5.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(0, 0, 7, 9)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_05shw"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+texture = ExtResource("2_7po71")
+texture_margin_left = 2.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8nsri"]
+texture = ExtResource("6_e03e2")
+texture_margin_left = 7.0
+texture_margin_right = 7.0
+axis_stretch_horizontal = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gwup5"]
+texture = ExtResource("8_cpgqb")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cbml6"]
+texture = ExtResource("11_2ugpr")
+texture_margin_left = 5.0
+texture_margin_top = 4.0
+texture_margin_right = 3.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(0, 0, 7, 9)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cwv36"]
+texture = ExtResource("12_vgmer")
+texture_margin_left = 7.0
+texture_margin_right = 7.0
+axis_stretch_horizontal = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gw044"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+texture = ExtResource("13_8pqdc")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l1n7y"]
+texture = ExtResource("14_865et")
+
+[node name="battle-ui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="contenders" type="HBoxContainer" parent="."]
+layout_mode = 2
+offset_right = 256.0
+offset_bottom = 144.0
+theme_override_constants/separation = 0
+
+[node name="left-contender" type="VBoxContainer" parent="contenders"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="name-panel" type="MarginContainer" parent="contenders/left-contender"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_bottom = 60
+
+[node name="PanelContainer" type="PanelContainer" parent="contenders/left-contender/name-panel"]
+texture_filter = 1
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_i5yy0")
+
+[node name="name" type="Label" parent="contenders/left-contender/name-panel/PanelContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+theme = ExtResource("3_dealn")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 8
+text = "Airi"
+horizontal_alignment = 1
+
+[node name="info-panels" type="HBoxContainer" parent="contenders/left-contender"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="data-panel" type="PanelContainer" parent="contenders/left-contender/info-panels"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_05shw")
+
+[node name="data-margins" type="MarginContainer" parent="contenders/left-contender/info-panels/data-panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 10
+
+[node name="data-split" type="HBoxContainer" parent="contenders/left-contender/info-panels/data-panel/data-margins"]
+layout_mode = 2
+
+[node name="hit-labels" type="Label" parent="contenders/left-contender/info-panels/data-panel/data-margins/data-split"]
+layout_mode = 2
+theme = ExtResource("3_dealn")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -1
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 8
+text = "HIT
+DMG
+CRT"
+
+[node name="hit-data" type="Label" parent="contenders/left-contender/info-panels/data-panel/data-margins/data-split"]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+theme = ExtResource("3_dealn")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -1
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 8
+text = "100
+12
+20"
+horizontal_alignment = 2
+
+[node name="item-panel-offset" type="MarginContainer" parent="contenders/left-contender/info-panels"]
+texture_filter = 1
+layout_mode = 2
+theme_override_constants/margin_top = 23
+
+[node name="item-panel" type="PanelContainer" parent="contenders/left-contender/info-panels/item-panel-offset"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_8nsri")
+
+[node name="item-divider" type="HBoxContainer" parent="contenders/left-contender/info-panels/item-panel-offset/item-panel"]
+layout_mode = 2
+
+[node name="item-spacing" type="MarginContainer" parent="contenders/left-contender/info-panels/item-panel-offset/item-panel/item-divider"]
+layout_mode = 2
+theme_override_constants/margin_top = 2
+
+[node name="item" type="TextureRect" parent="contenders/left-contender/info-panels/item-panel-offset/item-panel/item-divider/item-spacing"]
+layout_mode = 2
+texture = ExtResource("7_p12jn")
+stretch_mode = 3
+
+[node name="item-name" type="Label" parent="contenders/left-contender/info-panels/item-panel-offset/item-panel/item-divider"]
+custom_minimum_size = Vector2(53, 0)
+layout_mode = 2
+theme = ExtResource("3_dealn")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 8
+text = "Iron Katana"
+
+[node name="health-panel" type="PanelContainer" parent="contenders/left-contender"]
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_gwup5")
+
+[node name="health-panel-margins" type="MarginContainer" parent="contenders/left-contender/health-panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 0
+
+[node name="health-split" type="HBoxContainer" parent="contenders/left-contender/health-panel/health-panel-margins"]
+layout_mode = 2
+
+[node name="hp" type="Label" parent="contenders/left-contender/health-panel/health-panel-margins/health-split"]
+layout_mode = 2
+theme = ExtResource("3_dealn")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 8
+text = "35"
+
+[node name="hp-bar-spacing" type="MarginContainer" parent="contenders/left-contender/health-panel/health-panel-margins/health-split"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="hp-bar" type="TextureProgressBar" parent="contenders/left-contender/health-panel/health-panel-margins/health-split/hp-bar-spacing"]
+custom_minimum_size = Vector2(76, 7)
+layout_mode = 2
+max_value = 76.0
+step = 0.0
+value = 43.0
+nine_patch_stretch = true
+stretch_margin_left = 3
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("5_dwx1j")
+texture_progress = ExtResource("6_wof43")
+
+[node name="right-contender" type="VBoxContainer" parent="contenders"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="name-pannel" type="MarginContainer" parent="contenders/right-contender"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_bottom = 60
+
+[node name="PanelContainer" type="PanelContainer" parent="contenders/right-contender/name-pannel"]
+texture_filter = 1
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_cbml6")
+
+[node name="name" type="Label" parent="contenders/right-contender/name-pannel/PanelContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+theme = ExtResource("3_dealn")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 8
+text = "Kaito"
+horizontal_alignment = 1
+
+[node name="info-panels" type="HBoxContainer" parent="contenders/right-contender"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="contenders/right-contender/info-panels"]
+texture_filter = 1
+layout_mode = 2
+theme_override_constants/margin_top = 23
+
+[node name="item-panel" type="PanelContainer" parent="contenders/right-contender/info-panels/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_cwv36")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="contenders/right-contender/info-panels/MarginContainer/item-panel"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="contenders/right-contender/info-panels/MarginContainer/item-panel/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 2
+
+[node name="item" type="TextureRect" parent="contenders/right-contender/info-panels/MarginContainer/item-panel/HBoxContainer/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("7_p12jn")
+stretch_mode = 3
+
+[node name="item-name" type="Label" parent="contenders/right-contender/info-panels/MarginContainer/item-panel/HBoxContainer"]
+custom_minimum_size = Vector2(53, 0)
+layout_mode = 2
+theme = ExtResource("3_dealn")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 8
+text = "Iron Katana"
+
+[node name="data-panel" type="PanelContainer" parent="contenders/right-contender/info-panels"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_gw044")
+
+[node name="MarginContainer" type="MarginContainer" parent="contenders/right-contender/info-panels/data-panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="contenders/right-contender/info-panels/data-panel/MarginContainer"]
+layout_mode = 2
+
+[node name="hit-labels" type="Label" parent="contenders/right-contender/info-panels/data-panel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_dealn")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -1
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 8
+text = "HIT
+DMG
+CRT"
+
+[node name="hit-data" type="Label" parent="contenders/right-contender/info-panels/data-panel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+theme = ExtResource("3_dealn")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -1
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 8
+text = "100
+12
+20"
+horizontal_alignment = 2
+
+[node name="health-panel" type="PanelContainer" parent="contenders/right-contender"]
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_l1n7y")
+
+[node name="MarginContainer" type="MarginContainer" parent="contenders/right-contender/health-panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 23
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="contenders/right-contender/health-panel/MarginContainer"]
+layout_mode = 2
+
+[node name="hp" type="Label" parent="contenders/right-contender/health-panel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_dealn")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 8
+text = "20"
+
+[node name="MarginContainer" type="MarginContainer" parent="contenders/right-contender/health-panel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="hp-bar" type="TextureProgressBar" parent="contenders/right-contender/health-panel/MarginContainer/HBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(76, 7)
+layout_mode = 2
+max_value = 76.0
+step = 0.0
+value = 43.0
+nine_patch_stretch = true
+stretch_margin_left = 3
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("5_dwx1j")
+texture_progress = ExtResource("6_wof43")

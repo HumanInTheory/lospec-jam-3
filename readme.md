@@ -4,12 +4,4 @@ A Fire Emblem based tactical rpg made for Lospec Jam 3, featuring the TCH-Engine
 
 ## Code Details
 
-### To Be Implemented
-
-- game state machine
-    - game start
-    - load scene
-    - player idle
-    - grid menu 
-    - player moving
-    -  
+To be filled out

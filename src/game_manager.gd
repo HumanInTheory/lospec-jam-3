@@ -5,7 +5,8 @@ enum Game_State {
 	Splash_Screen,
 	Title_Screen,
 	Battle,
-	Result,
+	Victory,
+	Loss,
 }
 
 @export var skip_splash : bool = false
@@ -13,8 +14,8 @@ enum Game_State {
 var game_state : Game_State = Game_State.None
 @onready var splash_manager = $splash_manager
 @onready var title_manager = $title_manager
-@onready var battle_manager
-@onready var result_manager
+@onready var battle_manager = $battle_manager
+@onready var result_manager = $result_manager
 
 func _ready() -> void:
 	if skip_splash:
@@ -31,6 +32,8 @@ func enter_state(new_state : Game_State, old_state : Game_State) -> void:
 			splash_manager.start_splash()
 		Game_State.Title_Screen:
 			title_manager.start_title()
+		Game_State.Battle:
+			battle_manager.start_game()
 
 
 func exit_state(old_state : Game_State, new_state : Game_State) -> void:
@@ -41,6 +44,8 @@ func exit_state(old_state : Game_State, new_state : Game_State) -> void:
 			splash_manager.end_splash()
 		Game_State.Title_Screen:
 			title_manager.end_title()
+		Game_State.Battle:
+			battle_manager.end_game()
 
 
 func switch_state(new_state : Game_State) -> void:
@@ -59,5 +64,19 @@ func _on_splash_manager_splash_complete() -> void:
 func _on_title_manager_enter_game() -> void:
 	if game_state == Game_State.Title_Screen:
 		switch_state(Game_State.Battle)
+	else:
+		print_debug("State Error")
+
+
+func _on_battle_manager_victory() -> void:
+	if game_state == Game_State.Battle:
+		switch_state(Game_State.Victory)
+	else:
+		print_debug("State Error")
+
+
+func _on_battle_manager_loss() -> void:
+	if game_state == Game_State.Battle:
+		switch_state(Game_State.Loss)
 	else:
 		print_debug("State Error")

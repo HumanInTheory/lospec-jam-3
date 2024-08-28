@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Unit" load_steps=5 format=3 uid="uid://b0jjyortierpa"]
+
+[ext_resource type="SpriteFrames" uid="uid://bhkulfvm1psor" path="res://src/unit_resources/airi_sprites.tres" id="1_qhtws"]
+[ext_resource type="Script" path="res://src/custom_resources/unit.gd" id="1_v5kcl"]
+[ext_resource type="Script" path="res://src/custom_resources/unit_stats.gd" id="2_ekq8n"]
+
+[sub_resource type="Resource" id="Resource_ksycu"]
+script = ExtResource("2_ekq8n")
+max_health = 18
+strength = 5
+dexterity = 5
+speed = 7
+defense = 5
+luck = 7
+movement = 5
+constitution = 6
+
+[resource]
+script = ExtResource("1_v5kcl")
+name = "Airi"
+unit_class = 1
+level = 1
+experience = 0
+health = 18
+stats = SubResource("Resource_ksycu")
+status = 0
+appearance = ExtResource("1_qhtws")

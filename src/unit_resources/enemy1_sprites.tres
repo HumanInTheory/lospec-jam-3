@@ -1,0 +1,163 @@
+[gd_resource type="SpriteFrames" load_steps=18 format=3 uid="uid://dxujc8t0wj5e7"]
+
+[ext_resource type="Texture2D" uid="uid://qqsfuf6xq0ht" path="res://assets/overworld/enemy1-frames.png" id="1_oaw72"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2m5k"]
+atlas = ExtResource("1_oaw72")
+region = Rect2(0, 120, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5hvl"]
+atlas = ExtResource("1_oaw72")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfxsk"]
+atlas = ExtResource("1_oaw72")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ml87j"]
+atlas = ExtResource("1_oaw72")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mryjw"]
+atlas = ExtResource("1_oaw72")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_84dcl"]
+atlas = ExtResource("1_oaw72")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igdu0"]
+atlas = ExtResource("1_oaw72")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3dd50"]
+atlas = ExtResource("1_oaw72")
+region = Rect2(0, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cdid"]
+atlas = ExtResource("1_oaw72")
+region = Rect2(24, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5udyu"]
+atlas = ExtResource("1_oaw72")
+region = Rect2(48, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h72mt"]
+atlas = ExtResource("1_oaw72")
+region = Rect2(0, 72, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7nnkr"]
+atlas = ExtResource("1_oaw72")
+region = Rect2(24, 72, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6b7b"]
+atlas = ExtResource("1_oaw72")
+region = Rect2(48, 72, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8xnd"]
+atlas = ExtResource("1_oaw72")
+region = Rect2(0, 96, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atk1b"]
+atlas = ExtResource("1_oaw72")
+region = Rect2(24, 96, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3wro"]
+atlas = ExtResource("1_oaw72")
+region = Rect2(48, 96, 24, 24)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y2m5k")
+}],
+"loop": true,
+"name": &"disabled",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_f5hvl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfxsk")
+}, {
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_ml87j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfxsk")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_mryjw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_84dcl")
+}, {
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_igdu0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_84dcl")
+}],
+"loop": true,
+"name": &"selected",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_3dd50")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3cdid")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_5udyu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3cdid")
+}],
+"loop": true,
+"name": &"walk_down",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_h72mt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7nnkr")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_e6b7b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7nnkr")
+}],
+"loop": true,
+"name": &"walk_side",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_w8xnd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_atk1b")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_g3wro")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_atk1b")
+}],
+"loop": true,
+"name": &"walk_up",
+"speed": 10.0
+}]

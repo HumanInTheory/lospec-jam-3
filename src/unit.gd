@@ -1,5 +1,5 @@
 @tool
-class_name Unit
+class_name UnitOld
 extends Path2D
 
 signal finished_walking

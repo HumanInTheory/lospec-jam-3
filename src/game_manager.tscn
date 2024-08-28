@@ -1,4 +1,4 @@
-[gd_scene load_steps=112 format=3 uid="uid://c0uwj7qnobamh"]
+[gd_scene load_steps=116 format=3 uid="uid://c0uwj7qnobamh"]
 
 [ext_resource type="Script" path="res://src/game_manager.gd" id="1_81du1"]
 [ext_resource type="Texture2D" uid="uid://dsom7yca31gu1" path="res://assets/Valreiter_Title_ScreenV2.png" id="2_js6ir"]
@@ -6,12 +6,20 @@
 [ext_resource type="Texture2D" uid="uid://bnpoogntjddx" path="res://assets/TCH_E-intro-gridt.png" id="2_pt7v5"]
 [ext_resource type="Script" path="res://src/title_manager.gd" id="3_f5s0v"]
 [ext_resource type="Script" path="res://src/splash_manager.gd" id="3_gx2h4"]
+[ext_resource type="Script" path="res://src/grid.gd" id="3_p41tk"]
 [ext_resource type="PackedScene" uid="uid://4on340fc8ilc" path="res://src/level_one.tscn" id="3_ytree"]
 [ext_resource type="AudioStream" uid="uid://1sc6dm0gwp58" path="res://assets/TCH-intro.mp3" id="4_hglf6"]
+[ext_resource type="Script" path="res://src/custom_resources/unit.gd" id="4_v7eqm"]
 [ext_resource type="Script" path="res://src/music_manager.gd" id="5_gclk2"]
+[ext_resource type="Resource" uid="uid://b0jjyortierpa" path="res://src/unit_resources/airi_unit.tres" id="5_xhmk0"]
 [ext_resource type="AudioStream" uid="uid://c0c8y0jhgxs43" path="res://assets/sfx/Start_Game.wav" id="6_f5p17"]
 [ext_resource type="Script" path="res://src/sfx_manager.gd" id="7_d7fny"]
 [ext_resource type="AudioStream" uid="uid://dcrw2trle3kuu" path="res://assets/music/battle field_1.mp3" id="11_lk2hb"]
+
+[sub_resource type="Resource" id="Resource_prpo7"]
+script = ExtResource("3_p41tk")
+size = Vector2i(30, 47)
+cell_size = Vector2i(16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w5jpq"]
 atlas = ExtResource("2_pt7v5")
@@ -710,10 +718,14 @@ clip_1/auto_advance = 0
 
 [node name="game_manager" type="Node"]
 script = ExtResource("1_81du1")
+skip_splash = true
+skip_title = true
 
 [node name="battle_manager" type="Node2D" parent="."]
 script = ExtResource("2_oy55s")
+grid = SubResource("Resource_prpo7")
 levels = Array[PackedScene]([ExtResource("3_ytree")])
+player_units = Array[ExtResource("4_v7eqm")]([ExtResource("5_xhmk0")])
 
 [node name="result_manager" type="Control" parent="."]
 visible = false

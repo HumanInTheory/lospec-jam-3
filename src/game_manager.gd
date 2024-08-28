@@ -10,6 +10,7 @@ enum Game_State {
 }
 
 @export var skip_splash : bool = false
+@export var skip_title : bool = false
 
 var game_state : Game_State = Game_State.None
 @onready var splash_manager = $splash_manager
@@ -18,10 +19,15 @@ var game_state : Game_State = Game_State.None
 @onready var result_manager = $result_manager
 
 func _ready() -> void:
-	if skip_splash:
-		switch_state(Game_State.Title_Screen)
-	else:
+	if not skip_splash:
 		switch_state(Game_State.Splash_Screen)
+		return
+	
+	if not skip_title:
+		switch_state(Game_State.Title_Screen)
+		return
+	
+	switch_state(Game_State.Battle)
 
 
 func enter_state(new_state : Game_State, old_state : Game_State) -> void:

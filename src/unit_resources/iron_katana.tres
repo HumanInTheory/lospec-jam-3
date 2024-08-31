@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="UnitWeapon" load_steps=2 format=3 uid="uid://b7wfe00uwe4j0"]
+
+[ext_resource type="Script" path="res://src/custom_resources/unit_weapon.gd" id="1_yr0va"]
+
+[resource]
+script = ExtResource("1_yr0va")
+name = "Iron Katana"
+type = 1
+range = 1
+weight = 5
+might = 7
+hit_chance = 95
+crit_chance = 10

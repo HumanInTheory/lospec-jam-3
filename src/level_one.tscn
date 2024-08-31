@@ -14,7 +14,7 @@ enemy_spawns = [NodePath("enemy_spawn1")]
 enemies = Array[ExtResource("3_bobsb")]([ExtResource("4_s8g0k")])
 
 [node name="airi_spawn" type="Marker2D" parent="."]
-position = Vector2(24, 56)
+position = Vector2(88, 56)
 gizmo_extents = 8.0
 
 [node name="enemy_spawn1" type="Marker2D" parent="."]

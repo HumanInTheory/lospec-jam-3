@@ -1,19 +1,8 @@
-[gd_scene load_steps=32 format=3 uid="uid://d2uuprkfdyxms"]
+[gd_scene load_steps=31 format=3 uid="uid://d2uuprkfdyxms"]
 
-[ext_resource type="Texture2D" uid="uid://b1g0baeetfseo" path="res://assets/FireEmblemLikeField.png" id="1_jcxuo"]
+[ext_resource type="SpriteFrames" uid="uid://p00yv86el3he" path="res://src/attack_backgrounds.tres" id="1_p8n43"]
 [ext_resource type="Texture2D" uid="uid://dtlnar4gt6qmx" path="res://assets/battle-sprites/AoriSpritesheet.png" id="2_gici8"]
 [ext_resource type="Script" path="res://src/left_character.gd" id="3_b5d6g"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_j71t6"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_jcxuo")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_td7u5"]
 atlas = ExtResource("2_gici8")
@@ -214,7 +203,8 @@ animations = [{
 texture_filter = 1
 
 [node name="background" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_j71t6")
+sprite_frames = ExtResource("1_p8n43")
+animation = &"grass"
 centered = false
 
 [node name="right-character" type="AnimatedSprite2D" parent="."]

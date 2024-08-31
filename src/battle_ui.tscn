@@ -217,7 +217,7 @@ theme_override_constants/margin_bottom = 5
 custom_minimum_size = Vector2(76, 7)
 layout_mode = 2
 max_value = 76.0
-step = 0.0
+step = 3.0
 value = 43.0
 nine_patch_stretch = true
 stretch_margin_left = 3
@@ -231,18 +231,18 @@ texture_progress = ExtResource("6_wof43")
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="name-pannel" type="MarginContainer" parent="contenders/right-contender"]
+[node name="name-panel" type="MarginContainer" parent="contenders/right-contender"]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_bottom = 60
 
-[node name="PanelContainer" type="PanelContainer" parent="contenders/right-contender/name-pannel"]
+[node name="PanelContainer" type="PanelContainer" parent="contenders/right-contender/name-panel"]
 texture_filter = 1
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_cbml6")
 
-[node name="name" type="Label" parent="contenders/right-contender/name-pannel/PanelContainer"]
+[node name="name" type="Label" parent="contenders/right-contender/name-panel/PanelContainer"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 theme = ExtResource("3_dealn")

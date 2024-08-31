@@ -4,10 +4,19 @@ extends PanelContainer
 signal clicked_away
 signal clicked_item(item)
 
+enum Menu_Options {
+	Nothing,
+	Attack,
+	End_Turn,
+	Seige,
+	Wait,
+}
+
 const Item_Height : float = 10.5
 
 var item_count : int = 3
 var disabled : bool = true
+var current_items : PackedInt32Array
 
 func _gui_input(event: InputEvent) -> void:
 	if event.is_action_pressed("touch"):
@@ -23,14 +32,17 @@ func on_touch(pixel: Vector2) -> void:
 		return
 	
 	var item : int = int((pixel.y - position.y - 2.5) / Item_Height)
-	print(item)
+	print_debug(current_items[item])
 	hide_menu()
-	clicked_item.emit(item)
+	clicked_item.emit(current_items[item])
 
 
-func show_menu(location : Vector2, items : PackedStringArray):
+func show_menu(location : Vector2, items : PackedInt32Array):
 	position = location
-	$"item-text".text = "\n".join(items)
+	current_items = items
+	$"item-text".text = ""
+	for item in items:
+		$"item-text".text += Menu_Options.keys()[item].replace("_", " ") + "\n"
 	item_count = len(items)
 	reset_size()
 	show()

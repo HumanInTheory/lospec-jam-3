@@ -1,0 +1,14 @@
+[gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://p00yv86el3he"]
+
+[ext_resource type="Texture2D" uid="uid://b1g0baeetfseo" path="res://assets/FireEmblemLikeField.png" id="1_7vuri"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_7vuri")
+}],
+"loop": true,
+"name": &"grass",
+"speed": 5.0
+}]

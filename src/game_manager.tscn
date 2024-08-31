@@ -1,12 +1,12 @@
-[gd_scene load_steps=116 format=3 uid="uid://c0uwj7qnobamh"]
+[gd_scene load_steps=168 format=3 uid="uid://c0uwj7qnobamh"]
 
 [ext_resource type="Script" path="res://src/game_manager.gd" id="1_81du1"]
 [ext_resource type="Texture2D" uid="uid://dsom7yca31gu1" path="res://assets/Valreiter_Title_ScreenV2.png" id="2_js6ir"]
 [ext_resource type="Script" path="res://src/battle_manager.gd" id="2_oy55s"]
 [ext_resource type="Texture2D" uid="uid://bnpoogntjddx" path="res://assets/TCH_E-intro-gridt.png" id="2_pt7v5"]
+[ext_resource type="Resource" uid="uid://dg2wtdbr84xnh" path="res://src/world_grid.tres" id="3_6rg7i"]
 [ext_resource type="Script" path="res://src/title_manager.gd" id="3_f5s0v"]
 [ext_resource type="Script" path="res://src/splash_manager.gd" id="3_gx2h4"]
-[ext_resource type="Script" path="res://src/grid.gd" id="3_p41tk"]
 [ext_resource type="PackedScene" uid="uid://4on340fc8ilc" path="res://src/level_one.tscn" id="3_ytree"]
 [ext_resource type="AudioStream" uid="uid://1sc6dm0gwp58" path="res://assets/TCH-intro.mp3" id="4_hglf6"]
 [ext_resource type="Script" path="res://src/custom_resources/unit.gd" id="4_v7eqm"]
@@ -14,12 +14,287 @@
 [ext_resource type="Resource" uid="uid://b0jjyortierpa" path="res://src/unit_resources/airi_unit.tres" id="5_xhmk0"]
 [ext_resource type="AudioStream" uid="uid://c0c8y0jhgxs43" path="res://assets/sfx/Start_Game.wav" id="6_f5p17"]
 [ext_resource type="Script" path="res://src/sfx_manager.gd" id="7_d7fny"]
+[ext_resource type="Texture2D" uid="uid://ccoxysetwsrjc" path="res://assets/overworld/overlays.png" id="7_yyi68"]
+[ext_resource type="Script" path="res://src/grid_indicator.gd" id="8_qk6iv"]
+[ext_resource type="Script" path="res://src/ui_manager.gd" id="8_trisf"]
+[ext_resource type="Texture2D" uid="uid://by7a0arbiogy0" path="res://assets/infobox/character-card.png" id="9_ges71"]
+[ext_resource type="Script" path="res://src/unit_infocard.gd" id="9_sckaq"]
+[ext_resource type="PackedScene" uid="uid://dq1rla7pk3bp8" path="res://src/menu.tscn" id="9_u1hjp"]
+[ext_resource type="Texture2D" uid="uid://p01g68hleklv" path="res://assets/infobox/aori-portrait.png" id="10_8kavi"]
+[ext_resource type="Texture2D" uid="uid://c11pgfnrct8jn" path="res://assets/enemy-splash.png" id="10_hcmwv"]
+[ext_resource type="Theme" uid="uid://b7tfudhaagmpe" path="res://assets/default.theme" id="11_diblu"]
 [ext_resource type="AudioStream" uid="uid://dcrw2trle3kuu" path="res://assets/music/battle field_1.mp3" id="11_lk2hb"]
+[ext_resource type="Texture2D" uid="uid://cn0bbtiekuqy8" path="res://assets/player-splash.png" id="11_mb32a"]
+[ext_resource type="Script" path="res://src/attack_manager.gd" id="16_cpd22"]
+[ext_resource type="SpriteFrames" uid="uid://p00yv86el3he" path="res://src/attack_backgrounds.tres" id="17_abrsa"]
+[ext_resource type="PackedScene" uid="uid://box5pokb5njgr" path="res://src/battle_ui.tscn" id="19_g4wru"]
+[ext_resource type="Script" path="res://src/attack_ui.gd" id="20_xl4kg"]
 
-[sub_resource type="Resource" id="Resource_prpo7"]
-script = ExtResource("3_p41tk")
-size = Vector2i(30, 47)
-cell_size = Vector2i(16, 16)
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5kxnd"]
+texture = ExtResource("7_yyi68")
+1:0/0 = 0
+2:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ato70"]
+sources/0 = SubResource("TileSetAtlasSource_5kxnd")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_23tyo"]
+atlas = ExtResource("7_yyi68")
+region = Rect2(29, 29, 22, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmbbd"]
+atlas = ExtResource("10_hcmwv")
+region = Rect2(0, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nw3qp"]
+atlas = ExtResource("10_hcmwv")
+region = Rect2(256, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_srih2"]
+atlas = ExtResource("10_hcmwv")
+region = Rect2(512, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6mk74"]
+atlas = ExtResource("10_hcmwv")
+region = Rect2(0, 144, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2k2hs"]
+atlas = ExtResource("10_hcmwv")
+region = Rect2(256, 144, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4lnrq"]
+atlas = ExtResource("10_hcmwv")
+region = Rect2(512, 144, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmkcq"]
+atlas = ExtResource("10_hcmwv")
+region = Rect2(0, 288, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_narix"]
+atlas = ExtResource("10_hcmwv")
+region = Rect2(256, 288, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kt01w"]
+atlas = ExtResource("10_hcmwv")
+region = Rect2(512, 288, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h02o7"]
+atlas = ExtResource("10_hcmwv")
+region = Rect2(256, 288, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ecrcx"]
+atlas = ExtResource("10_hcmwv")
+region = Rect2(0, 288, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4rr40"]
+atlas = ExtResource("10_hcmwv")
+region = Rect2(512, 144, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vks31"]
+atlas = ExtResource("10_hcmwv")
+region = Rect2(256, 144, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2nbx6"]
+atlas = ExtResource("10_hcmwv")
+region = Rect2(0, 144, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ybgq"]
+atlas = ExtResource("10_hcmwv")
+region = Rect2(512, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jnf1o"]
+atlas = ExtResource("10_hcmwv")
+region = Rect2(256, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_blxti"]
+atlas = ExtResource("10_hcmwv")
+region = Rect2(0, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0b0df"]
+atlas = ExtResource("11_mb32a")
+region = Rect2(0, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0iq3c"]
+atlas = ExtResource("11_mb32a")
+region = Rect2(256, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q657y"]
+atlas = ExtResource("11_mb32a")
+region = Rect2(512, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lsco5"]
+atlas = ExtResource("11_mb32a")
+region = Rect2(0, 144, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s32vn"]
+atlas = ExtResource("11_mb32a")
+region = Rect2(256, 144, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h82yx"]
+atlas = ExtResource("11_mb32a")
+region = Rect2(512, 144, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ep16"]
+atlas = ExtResource("11_mb32a")
+region = Rect2(0, 288, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rstmn"]
+atlas = ExtResource("11_mb32a")
+region = Rect2(256, 288, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjvpp"]
+atlas = ExtResource("11_mb32a")
+region = Rect2(512, 288, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_140f6"]
+atlas = ExtResource("11_mb32a")
+region = Rect2(256, 288, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrcn1"]
+atlas = ExtResource("11_mb32a")
+region = Rect2(0, 288, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4qr5l"]
+atlas = ExtResource("11_mb32a")
+region = Rect2(512, 144, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8lu5"]
+atlas = ExtResource("11_mb32a")
+region = Rect2(256, 144, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygkhb"]
+atlas = ExtResource("11_mb32a")
+region = Rect2(0, 144, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kojgw"]
+atlas = ExtResource("11_mb32a")
+region = Rect2(512, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1og4"]
+atlas = ExtResource("11_mb32a")
+region = Rect2(256, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ly08"]
+atlas = ExtResource("11_mb32a")
+region = Rect2(0, 0, 256, 144)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4cnb8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmbbd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nw3qp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_srih2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6mk74")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2k2hs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4lnrq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmkcq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_narix")
+}, {
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_kt01w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h02o7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ecrcx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4rr40")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vks31")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2nbx6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ybgq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jnf1o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_blxti")
+}],
+"loop": false,
+"name": &"enemy",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0b0df")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0iq3c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q657y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lsco5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s32vn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h82yx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ep16")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rstmn")
+}, {
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_mjvpp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_140f6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vrcn1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4qr5l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8lu5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ygkhb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kojgw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p1og4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ly08")
+}],
+"loop": false,
+"name": &"player",
+"speed": 10.0
+}]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ltrgb"]
+texture = ExtResource("9_ges71")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w5jpq"]
 atlas = ExtResource("2_pt7v5")
@@ -723,9 +998,123 @@ skip_title = true
 
 [node name="battle_manager" type="Node2D" parent="."]
 script = ExtResource("2_oy55s")
-grid = SubResource("Resource_prpo7")
+grid = ExtResource("3_6rg7i")
 levels = Array[PackedScene]([ExtResource("3_ytree")])
 player_units = Array[ExtResource("4_v7eqm")]([ExtResource("5_xhmk0")])
+
+[node name="grid_overlay" type="TileMapLayer" parent="battle_manager"]
+z_index = 1
+tile_set = SubResource("TileSet_ato70")
+
+[node name="grid_indicator" type="Sprite2D" parent="battle_manager"]
+visible = false
+z_index = 2
+texture = SubResource("AtlasTexture_23tyo")
+script = ExtResource("8_qk6iv")
+grid = ExtResource("3_6rg7i")
+
+[node name="menu" parent="battle_manager" instance=ExtResource("9_u1hjp")]
+visible = false
+z_index = 3
+
+[node name="phase_wipe" type="AnimatedSprite2D" parent="battle_manager"]
+visible = false
+z_index = 2
+sprite_frames = SubResource("SpriteFrames_4cnb8")
+animation = &"player"
+centered = false
+
+[node name="battle_ui" type="Control" parent="battle_manager"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("8_trisf")
+
+[node name="unit_infocard" type="MarginContainer" parent="battle_manager/battle_ui"]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -88.0
+offset_top = -44.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 3
+script = ExtResource("9_sckaq")
+
+[node name="unit-box" type="PanelContainer" parent="battle_manager/battle_ui/unit_infocard"]
+custom_minimum_size = Vector2(88, 44)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ltrgb")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="battle_manager/battle_ui/unit_infocard/unit-box"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="battle_manager/battle_ui/unit_infocard/unit-box/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 2
+
+[node name="unit-portrait" type="TextureRect" parent="battle_manager/battle_ui/unit_infocard/unit-box/HBoxContainer/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("10_8kavi")
+
+[node name="MarginContainer2" type="MarginContainer" parent="battle_manager/battle_ui/unit_infocard/unit-box/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="battle_manager/battle_ui/unit_infocard/unit-box/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="name" type="Label" parent="battle_manager/battle_ui/unit_infocard/unit-box/HBoxContainer/MarginContainer2/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme = ExtResource("11_diblu")
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 8
+text = "Airi"
+horizontal_alignment = 1
+
+[node name="health" type="Label" parent="battle_manager/battle_ui/unit_infocard/unit-box/HBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("11_diblu")
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 8
+text = "HP 35/35"
+horizontal_alignment = 1
+
+[node name="attack_manager" type="Node2D" parent="."]
+visible = false
+z_index = 2
+script = ExtResource("16_cpd22")
+
+[node name="background" type="AnimatedSprite2D" parent="attack_manager"]
+sprite_frames = ExtResource("17_abrsa")
+animation = &"grass"
+centered = false
+
+[node name="left_character" type="AnimatedSprite2D" parent="attack_manager"]
+animation = &""
+centered = false
+
+[node name="right_character" type="AnimatedSprite2D" parent="attack_manager"]
+centered = false
+flip_h = true
+
+[node name="attack-ui" parent="attack_manager" instance=ExtResource("19_g4wru")]
+script = ExtResource("20_xl4kg")
 
 [node name="result_manager" type="Control" parent="."]
 visible = false
@@ -765,8 +1154,6 @@ script = ExtResource("3_f5s0v")
 visible = false
 sprite_frames = SubResource("SpriteFrames_a1slb")
 animation = &"splash"
-frame = 95
-frame_progress = 1.0
 centered = false
 script = ExtResource("3_gx2h4")
 
@@ -776,11 +1163,22 @@ script = ExtResource("7_d7fny")
 
 [node name="music_manager" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamInteractive_hwycx")
+volume_db = -80.0
 script = ExtResource("5_gclk2")
 
 [connection signal="battle_audio_trigger" from="battle_manager" to="music_manager" method="_on_battle_manager_battle_audio_trigger"]
+[connection signal="deselected_tile" from="battle_manager" to="battle_manager/grid_indicator" method="_on_battle_manager_deselected_tile"]
+[connection signal="deselected_unit" from="battle_manager" to="battle_manager/battle_ui" method="_on_battle_manager_deselected_unit"]
+[connection signal="initiate_attack" from="battle_manager" to="attack_manager" method="_on_battle_manager_initiate_attack"]
 [connection signal="loss" from="battle_manager" to="." method="_on_battle_manager_loss"]
+[connection signal="selected_tile" from="battle_manager" to="battle_manager/grid_indicator" method="_on_battle_manager_selected_tile"]
+[connection signal="selected_unit" from="battle_manager" to="battle_manager/battle_ui" method="_on_battle_manager_selected_unit"]
 [connection signal="victory" from="battle_manager" to="." method="_on_battle_manager_victory"]
+[connection signal="clicked_away" from="battle_manager/menu" to="battle_manager" method="_on_menu_clicked_away"]
+[connection signal="clicked_item" from="battle_manager/menu" to="battle_manager" method="_on_menu_clicked_item"]
+[connection signal="actor_died" from="attack_manager" to="battle_manager" method="_on_attack_manager_actor_died"]
+[connection signal="attack_complete" from="attack_manager" to="battle_manager" method="_on_attack_manager_attack_complete"]
+[connection signal="victim_died" from="attack_manager" to="battle_manager" method="_on_attack_manager_victim_died"]
 [connection signal="enter_game" from="title_manager" to="." method="_on_title_manager_enter_game"]
 [connection signal="game_start_sfx" from="title_manager" to="sfx_manager" method="_on_title_manager_game_start_sfx"]
 [connection signal="animation_finished" from="splash_manager" to="splash_manager" method="_on_animation_finished"]

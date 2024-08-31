@@ -1,8 +1,11 @@
-[gd_resource type="Resource" script_class="Unit" load_steps=5 format=3 uid="uid://b0jjyortierpa"]
+[gd_resource type="Resource" script_class="Unit" load_steps=8 format=3 uid="uid://b0jjyortierpa"]
 
 [ext_resource type="SpriteFrames" uid="uid://bhkulfvm1psor" path="res://src/unit_resources/airi_sprites.tres" id="1_qhtws"]
 [ext_resource type="Script" path="res://src/custom_resources/unit.gd" id="1_v5kcl"]
+[ext_resource type="SpriteFrames" uid="uid://c7ww0njm44ysv" path="res://src/unit_resources/airi_attacks.tres" id="2_bl2ww"]
+[ext_resource type="Texture2D" uid="uid://p01g68hleklv" path="res://assets/infobox/aori-portrait.png" id="2_cpihc"]
 [ext_resource type="Script" path="res://src/custom_resources/unit_stats.gd" id="2_ekq8n"]
+[ext_resource type="Resource" uid="uid://b7wfe00uwe4j0" path="res://src/unit_resources/iron_katana.tres" id="6_h6egv"]
 
 [sub_resource type="Resource" id="Resource_ksycu"]
 script = ExtResource("2_ekq8n")
@@ -23,5 +26,8 @@ level = 1
 experience = 0
 health = 18
 stats = SubResource("Resource_ksycu")
+weapon = ExtResource("6_h6egv")
 status = 0
 appearance = ExtResource("1_qhtws")
+attack_frames = ExtResource("2_bl2ww")
+info_sprite = ExtResource("2_cpihc")

@@ -12,3 +12,4 @@ extends Resource
 @export var movement : int
 @export var constitution : int
 # var affinity
+@export var weapon : UnitWeapon
